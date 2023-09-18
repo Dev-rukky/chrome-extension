@@ -22,3 +22,24 @@
 //     }
 //     ulEl.innerHTML = listItems  
 // }
+
+let leadsInput = [];
+const inputElement = document.getElementById("input-el");
+const saveInputBtn = document.getElementById("input-btn");
+const leadList = document.getElementById("ul-el");
+
+
+
+
+
+
+
+const renderLeads = () => {
+    let listItems = "";
+    for (let i = 0; i < leadsInput.length; i++) {
+        listItems += `
+        <
+        
+        ` 
+    }
+};
