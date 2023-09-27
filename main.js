@@ -6,20 +6,6 @@ const tabBtn = document.getElementById("tab-btn");
 const leadList = document.getElementById("ul-el");
 const leadsFromLocalStorage = JSON.parse(localStorage.getItem("myLeads"));
 
-
-if (leadsFromLocalStorage) {
-    leadsInput = leadsFromLocalStorage;
-    render(leadsInput);
-}
-
-tabBtn.addEventListener("click", () => {
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        leadsInput.push(tabs[0].url);
-        localStorage.setItem("myLeads", JSON.stringify(leadsInput));
-        render(leadsInput);
-    });
-});
-
 const render = (leads) => {
     let listItems = "";
     for (let i = 0; i < leads.length; i++) {
@@ -34,6 +20,20 @@ const render = (leads) => {
 
     leadList.innerHTML = listItems;
 };
+
+
+if (leadsFromLocalStorage) {
+    leadsInput = leadsFromLocalStorage;
+    render(leadsInput);
+}
+
+tabBtn.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        leadsInput.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(leadsInput));
+        render(leadsInput);
+    });
+});
 
 
 deleteBtn.addEventListener("dblclick", () => {
