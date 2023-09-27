@@ -12,6 +12,14 @@ if (leadsFromLocalStorage) {
     render(leadsInput);
 }
 
+tabBtn.addEventListener("click", () => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+        leadsInput.push(tabs[0].url);
+        localStorage.setItem("myLeads", JSON.stringify(leadsInput));
+        render(leadsInput);
+    });
+});
+
 const render = (leads) => {
     let listItems = "";
     for (let i = 0; i < leads.length; i++) {
@@ -43,12 +51,6 @@ saveInputBtn.addEventListener("click", () => {
 });
 
 
-tabBtn.addEventListener("click", () => {
-    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-        leadsInput.push(tabs[0].url);
-        localStorage.setItem("myLeads", JSON.stringify(leadsInput));
-        render(leadsInput);
-    });
-});
+
 
 
