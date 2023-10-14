@@ -1,7 +1,9 @@
 {
     "manifest_version": 3,
-    "version": "1.4",
+    "version": "1.4.1",
     "name": "Leads tracker",
+    "description":"Track leads from the website.",
+    "author": "Agbadudu Oghenerukevwe Destiny",
     "action": {
         "default_popup": "index.html",
         "default_icon": "icon.png"
